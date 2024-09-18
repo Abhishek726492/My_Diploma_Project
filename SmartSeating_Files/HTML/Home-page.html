@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Seating</title>
+<!-- remixicons -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+<!-- boxicons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'CSS/Home-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Success-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Home-page-content.css' %}">
+
+</head>
+<body>
+    {% if messages %}
+    {% for m in messages %}
+    {% if m.tags == "success" %}
+    <div class="success-holder" id="success-message" style="display: none;">{{m|safe}}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <header>
+        <div class="logo-title">
+            <img class="logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+            <p class="title">SmartSeating</p>
+        </div>
+
+        {% if user.is_authenticated %}
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}" class="active-page">Home</a></li>
+            <li><a href="{% url 'examschedule' %}">ExamSchedules</a></li>
+            <li><a href="{% url 'students' %}">StudentDetails</a></li>
+            <li><a href="{% url 'allotment' %}">SeatAllotment</a></li>
+            <li><a href="{% url 'rooms' %}">RoomDetails</a></li>
+            <li><a href="{% url 'invigilators' %}">InvigilatorDetails</a></li>
+        </ul>
+        {% endif %}
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <p class="user-name">Hello, {{user.username|upper}}</p>
+            <a href="{% url 'logout' %}" class="user"><i class="ri-logout-box-r-line"></i>Logout</a>
+            {% else %}
+            <a href="{% url 'home' %}" class="active-page">Home</a>
+            <a href="{% url 'examschedule' %}" id="active-page-logout">ExamSchedules</a>
+            <a href="{% url 'register' %}" class="user"><i class="ri-user-add-line"></i>Register</a>
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-3-fill"></i>Login</a>
+            {% endif %}
+            <a href="mailto:thokalaabhi789@gmail.com ?subject=Contact%20Us&body=Hello%20Admin,%0A%0AHere%20is%20a%20message%20from%20a%20user.%0A%0AThank%20you!" class="phone"><i class="ri-phone-fill"></i>ContactUs</a>
+            {% if user.is_authenticated %}
+            <div class="bx bx-menu" id="menu-icon"></div>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <div>
+            <p class="title-heading">Smart Seating<span class="title-caption"> - where Technology meets Efficiency</span></p>
+        </div>
+        <div class="purpose-div">
+            <a class="navigate-how" href="#how-to-use"><div class="purpose">How to USE</div></a>
+            <a class="navigate-how" href="#why-to-use"><div class="purpose">Why to USE</div></a>
+        </div>
+    </main>
+    <footer>
+        <div id="how-to-use" class="why">
+            <p class="below-heading">How to USE:</p>
+            <p class="points"><span class="points-heading">
+                1. Sign Up / Log InSign Up:</span><br>New users can create an account by providing an email and setting a password.<br>Log In: Existing users can access the system with their credentials.
+            </p>
+            <img src="{% static 'ALL_IMAGES/login-page.jpg' %}" alt="Login">
+            <img src="{% static 'ALL_IMAGES/signup-page.jpg' %}" alt="SignUp">
+            <p class="points"><span class="points-heading">
+                2. Enter Invigilator Details:</span><br>Navigate to the Invigilator Details module.Add new invigilators by entering their name, ID, contact information, and assigned rooms.
+            </p>
+            <img src="{% static 'ALL_IMAGES/invigilators-page.jpg' %}" alt="invigilators">
+            <p class="points"><span class="points-heading">
+                3. Set Up Room Details:</span><br>In the Room Details section, enter the number of rooms available for the exam.Specify the room capacity and layout (e.g., row seating, exam desk spacing).Add location details for easy identification, and assign rooms to invigilators.
+            </p>
+            <img src="{% static 'ALL_IMAGES/rooms-page.jpg' %}" alt="rooms">
+            <p class="points"><span class="points-heading">
+                4. Input Student Details:</span><br>In the Student Details module, add the list of students, their roll numbers, and other relevant details.
+            </p>
+            <img src="{% static 'ALL_IMAGES/students-page1.jpg' %}" alt="students">
+            <img src="{% static 'ALL_IMAGES/students-page2.jpg' %}" alt="add student">
+            <p class="points"><span class="points-heading">
+                5. Exam schedules:</span><br>All the exam schedules can be downloaded and viewed in this section, click the desired exam to download the pdf.
+            </p>
+            <img src="{% static 'ALL_IMAGES/exam-page.jpg' %}" alt="exam-schedule">
+            <p class="points"><span class="points-heading">
+                6. Generate Seating Arrangement:</span><br>Use the seating arrangement tool to automatically allocate students to rooms and seats based on the room capacity, invigilator, and exam schedule.
+            </p>
+            <img src="{% static 'ALL_IMAGES/seating1.jpg' %}" alt="seating">
+            <img src="{% static 'ALL_IMAGES/seating2.jpg' %}" alt="seating">
+            <img src="{% static 'ALL_IMAGES/seating3.jpg' %}" alt="seating">
+            <p class="points"><span class="points-heading">
+                7. Email Notifications:</span><br>Once the seating arrangement is set, use the email functionality to:Notify invigilators of their assigned rooms and duties.Send seating assignments to students along with their exam details.Include room numbers and instructions for the exam day in the emails.
+            </p>
+        </div>
+
+        <div id="why-to-use" class="how">
+            <p class="below-heading">Why to USE:</p>
+            <p class="points"><span class="points-heading">
+                1. Manual Complexity in Exam PlanningProblem:</span> <br>Organizing invigilators, rooms, and student seating manually is time-consuming and prone to errors.Solution: The app automates the allocation of invigilators, students, and rooms, streamlining the exam setup process and reducing human errors.
+            </p>
+            <p class="points"><span class="points-heading">
+                2. Error-Prone Seat AllocationProblem:</span> <br>Assigning students to specific seats, ensuring no duplication or overcrowding in rooms, can be difficult to manage manually.Solution: The app automatically allocates students to seats based on room capacity, preventing overcrowding and ensuring each student has a designated seat.
+            </p>
+            <p class="points"><span class="points-heading">
+                3. Communication GapsProblem:</span> <br>Communicating seating arrangements, invigilator duties, and exam schedules to everyone involved is often inefficient and can lead to confusion.Solution: With integrated email functionality, the app ensures that invigilators, students, and staff receive timely, clear notifications with all the necessary details.
+            </p>
+            <p class="points"><span class="points-heading">
+                4. Last-Minute ChangesProblem:</span> <br>Last-minute room changes, invigilator adjustments, or seating reassignments are hard to manage without creating confusion and miscommunication.Solution: The app allows for quick updates, with automatic notifications sent to everyone affected, ensuring real-time communication of changes.
+            </p>
+            <p class="points"><span class="points-heading">
+                5. Lack of Centralized InformationProblem:</span> <br>Keeping track of room details, student lists, exam schedules, and invigilators separately can lead to lost or outdated information.Solution: The app centralizes all relevant data (rooms, students, schedules, invigilators), making it easy to access, update, and manage in one place.
+            </p>
+            <p class="points"><span class="points-heading">
+                6. Inconsistent Exam Day ExecutionProblem:</span> <br>Poorly coordinated seating and invigilation on exam day can lead to delays, confusion, or even breaches in exam security.Solution: By ensuring that everyone knows their roles and where students are seated, the app enhances exam day efficiency and minimizes confusion.
+            </p>
+            <p class="points"><span class="points-heading">
+                7. Time-Consuming and Tedious ProcessProblem:</span> <br>Manually assigning seating, invigilators, and rooms for large exams takes a significant amount of time.Solution: The app dramatically reduces the time required to organize seating, allowing for a more efficient process.
+            </p>
+        </div>
+    </footer>
+
+    <!-- js-link -->
+    <script src="{% static 'JS/Home-page.js' %}"></script>
+    <script src="{% static 'JS/Success-page.js' %}"></script>
+</body>
+</html>

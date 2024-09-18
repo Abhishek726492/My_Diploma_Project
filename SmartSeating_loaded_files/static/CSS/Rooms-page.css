@@ -1,0 +1,24 @@
+.room-title {
+  display: block;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: rgb(42, 122, 154);
+}
+.rooms-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  border: 2px solid rgb(232, 232, 232);
+}
+.rooms-table .thd {
+  border: 2px solid rgb(232, 232, 232);
+  padding: 10px;
+  font-weight: bold;
+  color: #12234ad8;
+}
+.rooms-table .data {
+  border: 2px solid rgb(232, 232, 232);
+  padding: 10px;
+  font-size: 14px;
+  color: #163376d8;
+}

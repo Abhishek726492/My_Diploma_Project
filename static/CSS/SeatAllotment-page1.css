@@ -1,0 +1,155 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 26px;
+}
+.main-heading {
+  display: block;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 26px;
+  margin-bottom: 16px;
+  color: rgb(42, 122, 154);
+}
+.roadmap {
+  font-size: 14px;
+  color: rgba(0, 0, 255, 0.5);
+  font-weight: bold;
+}
+.show-data {
+  margin-top: 10px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: space-evenly;
+}
+.select-rooms {
+  display: grid;
+  grid-template-columns: 1fr 1fr  1fr;
+  justify-content: space-evenly;
+  border: 3px solid rgb(92, 92, 92);
+  border-radius: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.students-strength {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.items {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+.branch-label {
+  margin-left: 5px;
+  color: #000003;
+  font-weight: bold;
+  font-size: 14px;
+}
+.details {
+  color: #000003;
+  font-weight: bold;
+  margin: 20px;
+  font-size: 18px;
+}
+.branch-year {
+  width: 25px;
+  height: 25px;
+  accent-color: green;
+}
+.selected-students,
+.selected-seats {
+  color: rgb(8, 176, 8);
+  font-size: 30px;
+}
+.selected-seats {
+  color: red;
+}
+.submit-btn {
+  font-weight: 600;
+  background-color: rgb(17, 60, 78);
+  padding: 10px 20px;
+  border: 2px solid rgb(17, 60, 78);
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 16px;
+}
+.submit-btn:hover {
+  background-color: rgb(124, 178, 220);
+  color: rgb(17, 60, 78);
+}
+.intimation-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.intimation {
+  margin: 0;
+  margin: 0 25px;
+  font-size: 14px;
+  color: rgba(255, 0, 0, 0.571);
+  font-weight: bold;
+  display: inline-block;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.done-head {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 26px;
+  margin-bottom: 16px;
+  color: rgb(0, 161, 0);
+}
+.tick-div {
+  background: transparent;
+}
+.tick-div img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+.intimate {
+  margin: 20px 0;
+  margin-left: 25px;
+  font-size: 18px;
+  color: rgb(0, 83, 143);
+  font-weight: bold;
+}
+.date-time {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  background-color: #c7dceb;
+  padding: 7px 10px;
+  border: none;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.4);
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.date-time:focus {
+  outline: none;
+}
+.date-time-label {
+  font-size: 16px;
+  color:rgb(17, 60, 78);
+  font-weight: bold;
+}
+.final-data {
+  color: #D30038;
+  font-size: 22px;
+  margin: 0 10px;
+}

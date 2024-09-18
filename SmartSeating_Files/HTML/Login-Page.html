@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{% static 'ALL_IMAGES/Main-Logo-png.png' %}" type="img">
+  <link rel="stylesheet" href="{% static 'CSS/Login-Page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Success-page.css' %}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <title>Smart_Seating/Login</title>
+</head>
+<body>
+  {% if messages %}
+  {% for m in messages %}
+  {% if m.tags == "success" %}
+  <div class="success-holder" id="success-message" style="display: none;">{{m|safe}}</div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  <div class="logo-title-div">
+    <div class="logo-div">
+      <img class="main-logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+    </div>
+    <div class="title-div">
+      <p class="main-title">SMART SEATING</p>
+      <p class="tag-line">where Technology meets Efficiency</p>
+    </div>
+  </div>
+
+  <form action="login" method="post">
+    
+    <div class="center-div">
+      <p class="heading">ADMIN LOGIN</p>
+      <p class="username-p">Username</p>
+      <input class="username-in" type="text" placeholder="Username" name="username" autocomplete="off" required>
+      <p class="password-p">Password</p>
+      <div class="password-div">
+        <input class="password-in" type="password" placeholder="Password" name="password" autocomplete="off" required>
+        <div class="toggle-div">Show</div>
+      </div>
+      {% if messages %}
+      {% for m in messages %}
+      {% if m.tags == "error" %}
+      <div class="error-message">{{m|safe}}</div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      <input type="submit" class="login-btn" name="Login" value="Login" autocomplete="off">
+    </div>
+  </form>
+  <form action="{% url 'home' %}" method="post" class="back-to-short">
+    <input type="submit" value="&#x2190; Home Page">
+  </form>
+
+    <script src="{% static 'JS/Lock-Toggle.js' %}"></script>
+    <script src="{% static 'JS/Success-page.js' %}"></script>
+</body>
+</html>

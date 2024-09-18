@@ -1,0 +1,106 @@
+main {
+  margin: 26px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.student-title,
+.add-students-title {
+  display: block;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: rgb(42, 122, 154);
+}
+.student-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: 2px solid rgb(232, 232, 232);
+}
+.student-table .thd {
+  border: 2px solid rgb(232, 232, 232);
+  padding: 10px;
+  font-weight: bold;
+  color: #12234ad8;
+}
+.student-table .data {
+  border: 2px solid rgb(232, 232, 232);
+  padding: 10px;
+  font-size: 14px;
+  color: #163376d8;
+}
+.no-students-container {
+  width: 400%;
+  text-align: center;
+  margin: 20px 0;
+}
+.no-students {
+  color: red;
+  font-weight: 600;
+}
+
+.add-students-title {
+  font-size: 20px;
+}
+.add-form,
+.remove-room {
+  display: flex;
+  flex-direction: column;
+}
+.add-form label,
+.remove-room label {
+  font-size: 16px;
+  color:rgb(17, 60, 78);
+  font-weight: bold;
+}
+.add-form input,
+.remove-room input {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  background-color: #c7dceb;
+  padding: 7px 10px;
+  border: none;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.4);
+  min-width: 150%;
+}
+.add-form input:focus {
+  outline: none;
+}
+.add-form .submit-btn,
+.remove-room .submit-btn {
+  font-weight: 600;
+  background-color: rgb(17, 60, 78);
+  padding: 10px 20px;
+  border: 2px solid rgb(17, 60, 78);
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-form .submit-btn:hover,
+.remove-room .submit-btn:hover {
+  background-color: rgb(124, 178, 220);
+  color: rgb(17, 60, 78);
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+#strength {
+  color: blue;
+  font-weight: bolder;
+}
+
+.intimation {
+  margin: 0 0 20px 0; 
+}
+.intimation p {
+  font-size: 14px;
+  color: rgba(0, 0, 255, 0.5);
+  font-weight: bold;
+}

@@ -1,0 +1,73 @@
+main {
+  margin: 26px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title-heading {
+  color: #040472;
+  font-size: 45px;
+  font-weight: bolder;
+  margin: 20px 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+.title-caption {
+  font-size: 22px;
+  color: green;
+}
+.purpose-div {
+  display: flex;
+  width: 100vw;
+  margin-bottom: 80px;
+  padding: 0 15%;
+}
+.navigate-how {
+  width: 100vw;
+}
+.purpose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(225, 225, 225);
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  height: 40vh;
+  margin: 40px;
+  flex:1;
+  border-radius: 20px;
+  box-shadow: 2px 2px 20px 10px rgba(0,0,0,0.3);
+}
+.why, .how {
+  margin: 60px;
+}
+.below-heading {
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  color: black;
+}
+.points-heading {
+  font-size: 26px;
+  color: rgb(42, 122, 154);
+  font-weight: bold;
+  text-shadow: none;
+}
+.points {
+  font-size: 22px;
+  color: white;
+  margin: 30px 20px;
+  margin-right: 200px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+footer img {
+  width: 500px;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 0 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 10px 3px rgba(0,0,0,0.3);
+}

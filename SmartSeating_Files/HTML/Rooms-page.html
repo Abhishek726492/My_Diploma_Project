@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Seating</title>
+<!-- remixicons -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+<!-- boxicons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'CSS/Home-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Rooms-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Success-page.css' %}">
+
+</head>
+<body>
+    {% if messages %}
+    {% for m in messages %}
+    {% if m.tags == "success" %}
+    <div class="success-holder" id="success-message" style="display: none;">{{m|safe}}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <header>
+        <div class="logo-title">
+            <img class="logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+            <p class="title">SmartSeating</p>
+        </div>
+
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'examschedule' %}">ExamSchedules</a></li>
+            <li><a href="{% url 'students' %}">StudentDetails</a></li>
+            <li><a href="{% url 'allotment' %}">SeatAllotment</a></li>
+            <li><a href="{% url 'rooms' %}" class="active-page">RoomDetails</a></li>
+            <li><a href="{% url 'invigilators' %}">InvigilatorDetails</a></li>
+
+        </ul>
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <p class="user-name">Hello, {{user.username|upper}}</p>
+            <a href="{% url 'logout' %}" class="user"><i class="ri-logout-box-r-line"></i>Logout</a>
+            {% else %}
+            <a href="{% url 'register' %}" class="user"><i class="ri-user-add-line"></i>Register</a>
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-3-fill"></i>Login</a>
+            {% endif %}
+            <a href="mailto:thokalaabhi789@gmail.com ?subject=Contact%20Us&body=Hello%20Admin,%0A%0AHere%20is%20a%20message%20from%20a%20user.%0A%0AThank%20you!" class="phone"><i class="ri-phone-fill"></i>ContactUs</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <main>
+        <p class="room-title">Classroom Details</p>
+        <div class="rooms-table">
+            <div class="thd">S.No</div>
+            <div class="thd">Room Number</div>
+            <div class="thd">Floor</div>
+            <div class="thd">Rows</div>
+            <div class="thd">Columns</div>
+            <div class="thd">Total Capacity</div>
+
+            {% if rooms %}
+            {% for room in rooms %}
+            <div class="data">{{forloop.counter}}</div>
+            <div class="data">{{room.room_no}}</div>
+            <div class="data">{{room.room_floor}}</div>
+            <div class="data">{{room.rows}}</div>
+            <div class="data">{{room.cols}}</div>
+            <div class="data">{{room.room_capacity}}</div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-rooms-container">
+            <p class="no-rooms">
+                No Data Available 
+            </p>
+        </div>
+        {% endif %}
+    </main>
+    <footer>
+        <div class="forms-div">
+            <p class="add-rooms-title">Add More Rooms</p>
+            <form action="addRoom" method="post" class="add-form">
+                <label for="room-number">Room Number:</label>
+                <input type="number" id="room-number" name="room-number" required autocomplete="off">
+        
+                <label for="room-floor">Room Floor:</label>
+                <input type="number" id="room-floor" name="room-floor" required autocomplete="off">
+        
+                <label for="room-rows">Room Rows:</label>
+                <input type="number" id="room-rows" name="room-rows" required autocomplete="off">
+        
+                <label for="room-columns">Room Columns:</label>
+                <input type="number" id="room-columns" name="room-columns" required autocomplete="off">
+                <div class="submit-btn-container">
+                    <input type="submit" value="Add Room" class="submit-btn" autocomplete="off">
+                </div>
+            </form>
+        </div>
+        <div class="forms-div">
+            <p class="add-rooms-title">Remove Rooms</p>
+            <form action="removeRoom" method="post" class="remove-room">
+                <label for="room-number-2">Room Number:</label>
+                <input type="number" id="room-number" name="room-number-2" required autocomplete="off">
+                <div class="submit-btn-container">
+                    <input type="submit" value="Remove Room" class="submit-btn" autocomplete="off">
+                </div>
+            </form>
+        </div>
+    </footer>
+    
+
+    <!-- js-link -->
+     <script src="{% static 'JS/Home-page.js' %}"></script>
+     <script src="{% static 'JS/Success-page.js' %}"></script>
+</body>
+</html>

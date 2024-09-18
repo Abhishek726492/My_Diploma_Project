@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Seating</title>
+<!-- remixicons -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+<!-- boxicons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'CSS/Home-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/ExamSchedule-page.css' %}">
+
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img class="logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+            <p class="title">SmartSeating</p>
+        </div>
+
+        {% if user.is_authenticated %}
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'examschedule' %}" class="active-page">ExamSchedules</a></li>
+            <li><a href="{% url 'students' %}">StudentDetails</a></li>
+            <li><a href="{% url 'allotment' %}">SeatAllotment</a></li>
+            <li><a href="{% url 'rooms' %}">RoomDetails</a></li>
+            <li><a href="{% url 'invigilators' %}">InvigilatorDetails</a></li>
+
+        </ul>
+        {% endif %}
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <p class="user-name">Hello, {{user.username|upper}}</p>
+            <a href="{% url 'logout' %}" class="user"><i class="ri-logout-box-r-line"></i>Logout</a>
+            {% else %}
+            <a href="{% url 'home' %}" id="active-page-logout">Home</a>
+            <a href="{% url 'examschedule' %}" class="active-page">ExamSchedules</a>
+            <a href="{% url 'register' %}" class="user"><i class="ri-user-add-line"></i>Register</a>
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-3-fill"></i>Login</a>
+            {% endif %}
+            <a href="mailto:thokalaabhi789@gmail.com ?subject=Contact%20Us&body=Hello%20Admin,%0A%0AHere%20is%20a%20message%20from%20a%20user.%0A%0AThank%20you!" class="phone"><i class="ri-phone-fill"></i>ContactUs</a>
+            {% if user.is_authenticated %}
+            <div class="bx bx-menu" id="menu-icon"></div>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <p class="heading">Exam Schedules</p>
+        <div class="intimation">
+          <p>Click on the item to download and view the Exam Schedule</p>
+        </div>
+        <div class="academic">
+          <p>Academic Year 2024-25</p>
+        </div>
+        <div class="items">
+          <a href="{% static 'Exam_Time_Tables/1styearmid1.pdf' %}" download><div>1st Year <br>Mid1</div></a>
+          <a href="{% static 'Exam_Time_Tables/2ndyearmid1.pdf' %}" download><div>2nd Year <br>Mid1</div></a>
+          <a href="{% static 'Exam_Time_Tables/3rdyearmid1.pdf' %}" download><div>3rd Year <br>Mid1</div></a>
+          <a href="#"><div>Available Soon</div></a>
+          <a href="{% static 'Exam_Time_Tables/2ndyearmid2.pdf' %}" download><div>2nd Year <br>Mid2</div></a>
+          <a href="{% static 'Exam_Time_Tables/3rdyearmid2.pdf' %}" download><div>3rd Year <br>Mid2</div></a>
+          <a href="#"><div>Available Soon</div></a>
+          <a href="#"><div>Available Soon</div></a>
+          <a href="#"><div>Available Soon</div></a>
+        </div>
+    </main>
+
+    <!-- js-link -->
+     <script src="{% static 'JS/Home-page.js' %}">
+     </script>
+</body>
+</html>

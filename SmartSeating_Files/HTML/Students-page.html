@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Seating</title>
+<!-- remixicons -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+<!-- boxicons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'CSS/Home-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Students-page.css' %}">
+
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img class="logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+            <p class="title">SmartSeating</p>
+        </div>
+
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'examschedule' %}">ExamSchedules</a></li>
+            <li><a href="{% url 'students' %}" class="active-page">StudentDetails</a></li>
+            <li><a href="{% url 'allotment' %}">SeatAllotment</a></li>
+            <li><a href="{% url 'rooms' %}">RoomDetails</a></li>
+            <li><a href="{% url 'invigilators' %}">InvigilatorDetails</a></li>
+
+        </ul>
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <p class="user-name">Hello, {{user.username|upper}}</p>
+            <a href="{% url 'logout' %}" class="user"><i class="ri-logout-box-r-line"></i>Logout</a>
+            {% else %}
+            <a href="{% url 'register' %}" class="user"><i class="ri-user-add-line"></i>Register</a>
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-3-fill"></i>Login</a>
+            {% endif %}
+            <a href="mailto:thokalaabhi789@gmail.com ?subject=Contact%20Us&body=Hello%20Admin,%0A%0AHere%20is%20a%20message%20from%20a%20user.%0A%0AThank%20you!" class="phone"><i class="ri-phone-fill"></i>ContactUs</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <main>
+        <p class="student-title">Students Details</p>
+        <div class="intimation">
+            <p>Click on the Strength to view full details of the students</p>
+        </div>
+        <div class="student-table">
+            <div class="thd">S.No</div>
+            <div class="thd">Year</div>
+            <div class="thd">Branch</div>
+            <div class="thd">Strength</div>
+            {% if students %}
+            {% for s in students %}
+            <div class="data">{{forloop.counter}}</div>
+            <div class="data">{{s.year}}</div>
+            <div class="data">{{s.branch}}</div>
+            <a href="{% url 'studentdetails' %}?year={{s.year}}&branch={{s.branch}}"><div class="data" id="strength">{{s.capacity}}</div></a>
+            {% endfor %}
+            {% else %}
+            <div class="no-invigilator-container">
+                <p class="no-invigilator">
+                    No Data Available 
+                </p>
+            </div>
+            {% endif %}
+        </div>
+        
+    </main>
+    
+
+    <!-- js-link -->
+     <script src="{% static 'JS/Home-page.js' %}">
+     </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.success-holder {
+  position: fixed;
+  top: -100px; /* Start off-screen */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.779);
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: top 0.5s ease-in, opacity 0.5s ease-in, visibility 0.5s ease-in; /* Smooth animations */
+}
+
+.success-holder.show {
+  top: 10px; /* Slide into view */
+  opacity: 1;
+  visibility: visible;
+}
+
+.success-holder.hide {
+  top: -100px; /* Move out of view */
+  opacity: 0;
+  visibility: hidden;
+}

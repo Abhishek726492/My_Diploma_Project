@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Seating</title>
+<!-- remixicons -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+<!-- boxicons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'CSS/Home-page.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/SeatAllotment-page1.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/Success-page.css' %}">
+
+</head>
+<body>
+  {% if messages %}
+  {% for m in messages %}
+  {% if m.tags == "success" %}
+  <div class="success-holder" id="success-message" style="display: none;">{{m|safe}}</div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+    <header>
+        <div class="logo-title">
+            <img class="logo" src="{% static 'ALL_IMAGES/Main-Logo-png.png' %}">
+            <p class="title">SmartSeating</p>
+        </div>
+
+        {% if user.is_authenticated %}
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'examschedule' %}">ExamSchedules</a></li>
+            <li><a href="{% url 'students' %}">StudentDetails</a></li>
+            <li><a href="{% url 'allotment' %}" class="active-page">SeatAllotment</a></li>
+            <li><a href="{% url 'rooms' %}">RoomDetails</a></li>
+            <li><a href="{% url 'invigilators' %}">InvigilatorDetails</a></li>
+
+        </ul>
+        {% endif %}
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <p class="user-name">Hello, {{user.username|upper}}</p>
+            <a href="{% url 'logout' %}" class="user"><i class="ri-logout-box-r-line"></i>Logout</a>
+            {% else %}
+            <a href="{% url 'register' %}" class="user"><i class="ri-user-add-line"></i>Register</a>
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-3-fill"></i>Login</a>
+            {% endif %}
+            <a href="mailto:thokalaabhi789@gmail.com ?subject=Contact%20Us&body=Hello%20Admin,%0A%0AHere%20is%20a%20message%20from%20a%20user.%0A%0AThank%20you!" class="phone"><i class="ri-phone-fill"></i>ContactUs</a>
+            {% if user.is_authenticated %}
+            <div class="bx bx-menu" id="menu-icon"></div>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+      <p class="main-heading">Seat allotment</p>
+      <div class="roadmap">
+        <p>Select Students &#X2192;
+        Select Rooms &#X2192; 
+        Generate Seating Plan &#X2192;  
+        Generate Invigilators Allotment</p>
+      </div>
+      <div class="main-heading">Select Rooms</div>
+
+      <form action="assignInvigilators" method="POST">
+        <div class="intimation-div">
+          <p class="intimation">Unique_ID - Name</p>
+          <input type="checkbox" class="source branch-year" id="selectAll">
+          <label for="selectAll" class="branch-label">Select All</label>
+        </div>
+        <div class="show-data">
+          <div class="select-rooms">
+            {% if invigilators %}
+            {% for i in invigilators %}
+            <div class="items"><input type="checkbox" name="all_invigilators" id="branch_year_{{i.unique_no}}"  class="branch-year" value="{{i.unique_no}}">
+            <label class="branch-label" for="branch_year_{{i.unique_no}}">{{i.unique_no}} - {{i.name}}</label></div>
+            {% endfor %}
+            {% else %}
+            <div class="intimation">No Data Available</div>
+          {% endif %}
+          </div>
+          <div class="students-strength">
+            <div class="details">Total Invigilators Available= {{total}}</div>
+            <div class="details">Required Invigilators= <span class="selected-students">{{selected_rooms}}</span></div>
+            <div class="details">Selected Seats= <span class="selected-seats" name="selected-seats" id="selected-seats">0</span></div>
+            <input type="submit" value="Assign Invigilators" class="submit-btn">
+            
+          </div>
+        </div>
+      </form>
+      <div class="intimation-div" style="margin: 10px; font-size: 18px"></div>
+        <p class="intimation" style="font-size: 18px">Don't refresh the page through out the process</p>
+      </div>
+      <div class="intimation-div" style="margin: 10px; font-size: 18px">
+        <p class="intimation" style="font-size: 18px">Start from the beginning if anything goes wrong or selected incorrect details</p>
+      </div>
+    </main>
+    <footer>
+      {% if seating %}
+      {% for s in seating %}
+      <div>{{s}}</div>
+      {% endfor %}
+      {% endif %}
+    </footer>
+
+    <!-- js-link -->
+    <script src="{% static 'JS/Home-page.js' %}"></script>
+    <script src="{% static 'JS/Success-page.js' %}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('input[name="all_invigilators"]');
+        const selectedSeatsElem = document.getElementById('selected-seats');
+        const requiredSeatsElem = document.querySelector('.selected-students'); // span showing required seats
+        const submitBtn = document.querySelector('.submit-btn')
+        const selectAllElem = document.querySelector('.source')
+
+        selectAllElem.addEventListener('click',function() {
+          const selectAllstate=selectAllElem.checked;
+          checkboxes.forEach(checkbox=>{
+            checkbox.checked=selectAllstate;
+            updateSelectedSeats();
+          })
+        })
+
+        function updateSelectedSeats() {
+          let checked_one = 0;
+          const requiredSeats = parseInt(requiredSeatsElem.textContent, 10) || 0; // Ensure it's a number or default to 0
+    
+          checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+              checked_one=checked_one+1;
+            }
+          });
+    
+          // Update the visible span
+          selectedSeatsElem.textContent = checked_one;
+    
+          // Update color based on the comparison
+          if (checked_one >= requiredSeats) {
+            selectedSeatsElem.style.color = 'rgb(8, 176, 8)';
+            submitBtn.style.display = 'inline-block';
+          } else {
+            selectedSeatsElem.style.color = 'red';
+            submitBtn.style.display = 'none';
+          }
+        }
+    
+        // Add event listeners to checkboxes
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('change', updateSelectedSeats);
+        });
+    
+        // Call updateSelectedSeats initially
+        updateSelectedSeats();
+      });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,151 @@
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(135deg, #ebf1f6 0%,#abd3ee 31%,#89c3eb 31%,#89c3eb 64%,#89c3eb 64%,#89c3eb 64%,#abd3ee 64%,#d5ebfb 100%);
+}
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.logo-title-div {
+  display: flex;
+  margin-bottom: 30px;
+}
+.logo-div {
+  display: flex;
+  align-items: center;
+}
+.main-logo {
+  height: 100px;
+}
+.title-div {
+  margin-left: 20px;
+}
+.main-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0b2970;
+  margin: 0;
+  padding: 0;
+  padding-left: 30px;
+}
+.tag-line {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  padding-left: 30px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.center-div {
+  background-color: #0b2970d8;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.5);
+  width: 500px;
+}
+.heading {
+  font-size: 30px;
+  color: white;
+  text-align: center; 
+  margin: 20px;
+  margin-bottom: 50px;
+}
+.username-p,
+.password-p,
+.mail-p {
+  font-size: 18px;
+  margin: 16px 0;
+  color: rgb(196, 196, 196);
+}
+.username-in,
+.password-in,
+.mail-in {
+  background-color: #97aee131;
+  border: none;
+  height: 30px;
+  width: 94%;
+  padding: 8px;
+  padding-left: 14px;
+  box-shadow: inset 2px 0px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+  margin-bottom: 14px;
+  font-size: 16px;
+  border-radius: 2px;
+}
+.password-in {
+  margin-bottom: 50px;
+}
+.username-in::placeholder,
+.password-in::placeholder,
+.mail-in::placeholder {
+  color: rgb(192, 192, 192);
+  font-size: 16px;
+}
+.username-in:focus,
+.password-in:focus,
+.mail-in:focus {
+  outline: none;
+  outline-color: black;
+}
+.login-btn {
+  display: block;
+  background-color: #4d69c4;
+  border: none;
+  color: rgb(244, 244, 244);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 2px;
+  transition: background-color 0.1s;
+}
+.login-btn:hover {
+  background-color: #3d65c3d8;
+}
+.login-btn:active {
+  background-color: #4866aad8;
+}
+.reminder-p {
+  color: rgb(225, 225, 225);
+  font-size: 17px;
+}
+.register-a {
+  margin: 30px;
+  color: rgb(0, 157, 255);
+}
+
+.password-div {
+  position: relative;
+  overflow: hidden;
+}
+.toggle-div {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  background: url('../ALL_IMAGES/Locked.png') no-repeat;
+  background-size: contain;
+  width: 24px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-image 0.15s;
+}
