@@ -41,6 +41,7 @@ main {
 }
 .items a{
   border: 3px solid black;
+  background-color: white;
   border-radius: 20px;
   height: 120px;
   display: flex;

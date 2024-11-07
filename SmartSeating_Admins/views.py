@@ -430,12 +430,13 @@ def generateLayout(request):
     for room_index, room in enumerate(rooms):
         fill_room(room, room_index, cols[room_index])
 
+    #convert to excel sheets
     for room,r in zip(rooms, selected_rooms_details):
       pf=pd.DataFrame(room)
       pf.to_excel(f'{request.user.username}_Room{r.room_no}.xlsx',index=False,engine='openpyxl')
       a+=1
 
-    #sending mail of students allotment to admin via celery worker
+    # #sending mail of students allotment to admin via celery worker
     selected_rooms_list = list(selected_rooms_details.values("room_no", "room_capacity"))
     students_email_to_admin.delay(request.user.username, request.user.email, selected_rooms_list,exam_date,time_str)
 
@@ -469,7 +470,7 @@ def generateLayout(request):
     examination_date = datetime.strptime(exam_date, '%Y-%m-%d').date()  # Convert to date object
     examination_time = datetime.strptime(time_str, '%H:%M').time()  # Convert to time object
     exam_datetime=datetime.combine(examination_date,examination_time)
-    time_before_exam=exam_datetime-timedelta(minutes=5)
+    time_before_exam=exam_datetime-timedelta(minutes=25)
     timezone=pytz.timezone('Asia/Kolkata')
     email_send_time=timezone.localize(time_before_exam)
 
@@ -559,7 +560,7 @@ def assignInvigilators(request):
   dfi = pd.DataFrame(excel_data)
   dfi.to_excel(f'{request.user.username}_Invigilators_Details.xlsx',index=False,engine='openpyxl')
 
-  #sending invigilators details to admin via celery worker
+  # #sending invigilators details to admin via celery worker
   invigilators_email_to_admin.delay(request.user.username,request.user.email,exam_date,time_str)
 
   #calculate time

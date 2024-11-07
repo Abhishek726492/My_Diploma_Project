@@ -70,11 +70,6 @@
       <div class="intimate">Seating Allocation and Invigilators Details will be sent in a while to your email <span class="final-data">{{email}}</span></div>
       <div class="intimate">Students and Invigilators will receive the mail 10 minutes before the Examination to their personal Emails on <span class="final-data">{{date}}</span> by <span class="final-data">{{time}}</span></div>
     </footer>
-    {% if invigilators %}
-    {% for i in invigilators %}
-    <div>{{i}}</div>
-    {% endfor %}
-    {% endif %}
     
     <script src="{% static 'JS/Home-page.js' %}"></script>
     <script src="{% static 'JS/Success-page.js' %}"></script>

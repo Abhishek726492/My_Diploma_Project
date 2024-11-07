@@ -1,0 +1,86 @@
+[2024-09-30 10:10:35,657: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_ACCEPT_CONTENT' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the accept_content instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:10:35,657: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_TIMEZONE' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the timezone instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:10:35,657: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_TASK_SERIALIZER' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the task_serializer instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:10:35,691: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_RESULT_BACKEND' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the result_backend instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:10:35,691: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_RESULT_SERIALIZER' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the result_serializer instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:10:35,691: WARNING/MainProcess] Please run `celery upgrade settings path/to/settings.py` to avoid these warnings and to allow a smoother upgrade to Celery 6.0.
+[2024-09-30 10:10:37,056: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\worker\consumer\consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-09-30 10:10:37,056: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\worker\consumer\consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-09-30 10:11:02,179: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_TASK_SERIALIZER' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the task_serializer instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:11:02,179: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_ACCEPT_CONTENT' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the accept_content instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:11:02,179: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_RESULT_BACKEND' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the result_backend instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:11:02,179: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_TIMEZONE' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the timezone instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:11:02,180: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\app\utils.py:203: CDeprecationWarning: 
+    The 'CELERY_RESULT_SERIALIZER' setting is deprecated and scheduled for removal in
+    version 6.0.0. Use the result_serializer instead
+
+  deprecated.warn(description=f'The {setting!r} setting',
+
+[2024-09-30 10:11:02,180: WARNING/MainProcess] Please run `celery upgrade settings path/to/settings.py` to avoid these warnings and to allow a smoother upgrade to Celery 6.0.
+[2024-09-30 10:11:03,657: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\worker\consumer\consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-09-30 10:11:03,673: WARNING/MainProcess] C:\Users\thoka\DjangoProjects\first\test\Lib\site-packages\celery\worker\consumer\consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
